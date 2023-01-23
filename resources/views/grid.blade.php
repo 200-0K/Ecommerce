@@ -10,8 +10,16 @@
         @vite("resources/js/app.js")
     </head>
     <body class="antialiased font-cairo h-screen">
-        <div class="flex h-full justify-center items-center">
-            <h1 dir="auto" class="text-3xl">أهلًا بكم في متجر التكنلوجيا الحديثة لبيع الهواتف الذكية!</h1>
+        <div class="grid grid-cols-3 place-items-center place-content-center gap-y-4 h-full">
+          
+          <span class="font-bold">رقم الهاتف</span>
+          <span class="font-bold">النوع</span>
+          <span class="font-bold">السعر</span>
+
+          <span>{{ $number }}</span>
+          <span>{{ $type }}</span>
+          <span>{{ $price }} {{ $currency }}</span>
+          
         </div>
     </body>
 </html>

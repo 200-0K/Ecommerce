@@ -11,7 +11,7 @@
     </head>
     <body class="antialiased font-cairo h-screen">
         <div class="flex h-full justify-center items-center">
-            <h1 dir="auto" class="text-3xl">أهلًا بكم في متجر التكنلوجيا الحديثة لبيع الهواتف الذكية!</h1>
+            <h1 dir="auto" class="text-3xl">عدد الهواتف القديمة = 254 هاتف</h1>
         </div>
     </body>
 </html>
