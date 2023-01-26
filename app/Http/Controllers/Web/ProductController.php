@@ -28,7 +28,7 @@ class ProductController extends Controller
                 // 'meta' => $meta,
             ];
         }
-        return view('products.index', ['phones' => $data]);
+        return view('products.index', ['products' => $data]);
     }
 
     /**
