@@ -1,6 +1,6 @@
 <div class="navbar bg-base-200 py-3 px-4">
   <div class="flex-1">
-    <a class="btn btn-ghost normal-case text-xl">{{ config('app.name') }}</a>
+    <a href="/" class="btn btn-ghost normal-case text-xl">{{ config('app.name') }}</a>
   </div>
   <div class="flex-none">
     <div class="dropdown dropdown-end">
