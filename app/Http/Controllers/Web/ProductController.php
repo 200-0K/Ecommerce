@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Support\Facades\Http;
 
 class ProductController extends Controller
@@ -16,16 +17,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $res = Http::get('https://dummyjson.com/products')->json();
-        $data = [];
-        foreach($res['products'] as $product) {
+        // $res = Http::get('https://dummyjson.com/products')->json();
+        $products = Product::with(['category', 'images'])->get();
+        foreach($products as $product) {
             // $meta = 'Color: ' . Arr::random(['Black', 'White', 'Red', 'Green']);
             $data[] = [
-                'name' => $product['title'],
-                'description' => $product['description'],
-                'price' => round($product['price'] * 3.75) . ' SAR',
-                'cover' => $product['thumbnail'],
-                // 'meta' => $meta,
+                'name' => $product->name,
+                'description' => $product->description,
+                'price' => round($product->price * 3.75) . ' SAR',
+                'cover' => $product->images[0]->url ?? 'https://source.unsplash.com/random/',
             ];
         }
         return view('products.index', ['products' => $data]);
