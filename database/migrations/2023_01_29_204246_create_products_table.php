@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('price');
             $table->integer('qty');
-            $table->float('rate', 2, 1);
+            $table->float('rate', 3, 1);
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('company_id')->constrained('companies');
             $table->timestamps();
