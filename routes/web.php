@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\CheckoutController;
 use App\Http\Controllers\Web\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/explore', [ProductController::class, 'index'])->name("explore");
+Route::get('/explore', [ProductController::class, 'index'])->name('explore');
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
