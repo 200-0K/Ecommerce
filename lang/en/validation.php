@@ -174,6 +174,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'card_holder'           => 'Card Holder',
+        'card_details'          => 'Card Details',
+    ],
 
 ];
