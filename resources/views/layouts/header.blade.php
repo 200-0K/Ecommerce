@@ -1,9 +1,9 @@
-<div class="navbar bg-base-200 py-3 px-4">
+<div dir="ltr" class="navbar bg-base-200 py-3 px-4">
   <div class="flex-1">
     <a href="/" class="btn btn-ghost normal-case text-xl">{{ config('app.name') }}</a>
-    <a href="{{ route('explore') }}" class="btn btn-ghost normal-case">{{ __('app.explore') }}</a>
   </div>
   <div class="flex-none">
+    <a href="{{ route('explore') }}" class="btn btn-ghost normal-case">{{ __('app.explore') }}</a>
     <div class="dropdown dropdown-end">
       <label tabindex="0" class="btn btn-ghost btn-circle">
         <div class="indicator">
