@@ -25,7 +25,8 @@ class ProductImageFactory extends Factory
         $output = new ConsoleOutput();
         while (true) {
             $res = Http::get('https://source.unsplash.com/random/');
-            $url = str($res->effectiveUri())->before('?');
+            // $url = str($res->effectiveUri())->before('?');
+            $url = $res->effectiveUri();
             
             if (ProductImage::firstWhere('url', $url) == null) break;
             // $output->writeln(['Duplicate:', $url]);

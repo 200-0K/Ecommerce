@@ -6,6 +6,7 @@ use App\Models\Invoice;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Order>
@@ -19,8 +20,9 @@ class OrderFactory extends Factory
      */
     public function definition()
     {
+        $output = new ConsoleOutput();
         $product = Product::inRandomOrder()->first();
-        $qty = fake()->numberBetween(1, $product->qty);
+        $qty = fake()->numberBetween(1, $product->qty/4);
         $product->decrement('qty', $qty);
 
         return [
