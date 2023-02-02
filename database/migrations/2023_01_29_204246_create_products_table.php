@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->decimal('price');
-            $table->integer('qty');
-            $table->float('rate', 3, 1);
+            $table->decimal('price', unsigned: true);
+            $table->decimal('new_price', unsigned: true)->nullable();
+            $table->integer('qty', unsigned: true);
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('company_id')->constrained('companies');
             $table->timestamps();

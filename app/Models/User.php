@@ -42,7 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function purchases() {
-        return $this->belongsToMany(Product::class, 'purchases', 'user_id', 'product_id');
+    public function invoices() {
+        return $this->hasMany(Invoice::class, 'user_id');
+    }
+
+    public function cart() {
+        return $this->belongsToMany(Product::class, 'carts', 'user_id', 'product_id');
     }
 }

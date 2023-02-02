@@ -17,11 +17,15 @@ class Product extends Model
         return $this->belongsTo(Company::class, 'company_id');
     }
 
-    public function purchases() {
-        return $this->belongsToMany(User::class, 'purchases', 'product_id', 'user_id');
+    public function orders() {
+        return $this->hasMany(Order::class, 'product_id');
     }
 
     public function images() {
         return $this->hasMany(ProductImage::class, 'product_id');
+    }
+
+    public function usersCart() {
+        return $this->belongsToMany(User::class, 'carts', 'product_id', 'user_id');
     }
 }

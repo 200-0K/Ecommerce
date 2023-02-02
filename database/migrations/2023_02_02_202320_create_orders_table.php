@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('product_images', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('url')->unique();
+            $table->integer('qty', unsigned: true);
+            $table->text('comment')->nullable();
+            $table->float('rate', 2, 1, unsigned: true);
             $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('invoice_id')->constrained('invoices');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_images');
+        Schema::dropIfExists('orders');
     }
 };
