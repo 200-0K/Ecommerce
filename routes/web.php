@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\CheckoutController;
 use App\Http\Controllers\Web\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,15 @@ Route::get('/', function () {
 
 Route::get('/explore', [ProductController::class, 'index'])->name('explore');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
