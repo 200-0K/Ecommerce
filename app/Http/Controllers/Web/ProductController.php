@@ -15,11 +15,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-
-        $products = Product::with(['category', 'images'])->simplePaginate(15);
+        $products = Product::with(['category', 'images', 'orders'])->simplePaginate(15);
         foreach ($products as $product) {
-            $product->price = round($product->price * 3.75) . ' SAR';
+            $product->price = round($product->price);
+            if ($product->new_price) $product->new_price = round($product->new_price);
             $product->cover = $product->images[0]->url;
+            $product->currency = 'SAR';
+            $product->rate = round($product->orders->avg('rate'), 2);
+            $product->commentsCount = $product->orders->whereNotNull('comment')->count('comment');
         }
         return view('products.index', ['products' => $products]);
     }
