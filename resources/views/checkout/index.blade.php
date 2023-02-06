@@ -1,7 +1,24 @@
 {{-- Template Source: https://componentland.com/component/checkout-page-2 --}}
-<x-app-layout>
-  <div class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
+<x-app-layout class="flex flex-col">
 
+  @unless(Auth::user()->cart)
+  <div class="flex-1 flex flex-col gap-4 items-center justify-center bg-white py-20 sm:px-10 lg:px-20 xl:px-32">
+    <svg class="w-full h-full max-h-20" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 48 48">
+      <path d="M14.5 44q-1.5 0-2.55-1.05-1.05-1.05-1.05-2.55 0-1.5 1.05-2.55Q13 36.8 14.5 36.8q1.5 0 2.55 1.05 1.05 1.05 1.05 2.55 0 1.5-1.05 2.55Q16 44 14.5 44Zm20.2 0q-1.5 0-2.55-1.05-1.05-1.05-1.05-2.55 0-1.5 1.05-2.55 1.05-1.05 2.55-1.05 1.5 0 2.55 1.05 1.05 1.05 1.05 2.55 0 1.5-1.05 2.55Q36.2 44 34.7 44ZM24 18.8q-.7 0-1.2-.5t-.5-1.2q0-.7.5-1.2t1.2-.5q.7 0 1.2.5t.5 1.2q0 .7-.5 1.2t-1.2.5ZM22.5 12V2h3v10Zm-8 21.65q-2.1 0-3.075-1.7-.975-1.7.025-3.45l3.05-5.55L7 7H3.1V4h5.8l8.5 18.2H32l7.8-14 2.6 1.4-7.65 13.85q-.45.85-1.225 1.3-.775.45-1.825.45h-15l-3.1 5.45h24.7v3Z" /></svg>
+    <p class="text-3xl font-bold text-black/80">{{ __('app.no_cart_products_message') }}</p>
+    <a href="{{ route('explore') }}" class="btn btn-primary font-bold">{{ __('app.continue_shopping') }}</a>
+  </div>
+  @else
+  @php
+  $currency = 'SAR';
+  $products = Auth::user()->cart;
+  $subtotal = $products->sum(fn($p) => $p->new_price ?? $p->price);
+  $tax = 0.15;
+  $taxValue = round($subtotal * $tax, 2);
+  $shipping = 15;
+  $total = $subtotal + $taxValue + $shipping;
+  @endphp
+  <div class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
     <div class="mt-4 py-2 text-xs mx-auto sm:mt-0 sm:ml-auto sm:text-base">
       <div class="relative">
         <ul class="relative flex w-full items-center justify-between gap-4 space-x-2 sm:space-x-4">
@@ -34,50 +51,37 @@
       <p class="text-xl font-medium" dir="auto">{{ __('checkout.order_summary.title') }}</p>
       <p class="text-gray-400" dir="auto">{{ __('checkout.order_summary.description') }}</p>
       <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
-        <div class="flex flex-col rounded-lg bg-white sm:flex-row">
-          <img class="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-          <div class="flex w-full flex-col px-4 py-4">
-            <span class="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
-            <span class="float-right text-gray-400">42EU - 8.5US</span>
-            <p class="text-lg font-bold">$138.99</p>
-          </div>
-        </div>
-        <div class="flex flex-col rounded-lg bg-white sm:flex-row">
-          <img class="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-          <div class="flex w-full flex-col px-4 py-4">
-            <span class="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
-            <span class="float-right text-gray-400">42EU - 8.5US</span>
-            <p class="mt-auto text-lg font-bold">$238.99</p>
-          </div>
-        </div>
+        @foreach($products as $product)
+        <x-checkout-product-item :name="$product->name" :cover="$product->images()->first()->url" :qty="$product->pivot->qty" :price="$product->new_price ?? $product->price" :currency="$currency" />
+        @endforeach
       </div>
 
       {{-- Shipping Address --}}
       {{-- <p class="mt-8 text-lg font-medium">Shipping Methods</p>
-      <form class="mt-5 grid gap-6">
-        <div class="relative">
-          <input class="peer hidden" id="radio_1" type="radio" name="radio" checked />
-          <span class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-          <label class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_1">
-            <img class="w-14 object-contain" src="/images/naorrAeygcJzX0SyNI4Y0.png" alt="" />
-            <div class="ml-5">
-              <span class="mt-2 font-semibold">Fedex Delivery</span>
-              <p class="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
-            </div>
-          </label>
-        </div>
-        <div class="relative">
-          <input class="peer hidden" id="radio_2" type="radio" name="radio" checked />
-          <span class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-          <label class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_2">
-            <img class="w-14 object-contain" src="/images/oG8xsl3xsOkwkMsrLGKM4.png" alt="" />
-            <div class="ml-5">
-              <span class="mt-2 font-semibold">Fedex Delivery</span>
-              <p class="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
-            </div>
-          </label>
-        </div>
-      </form> --}}
+        <form class="mt-5 grid gap-6">
+          <div class="relative">
+            <input class="peer hidden" id="radio_1" type="radio" name="radio" checked />
+            <span class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+            <label class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_1">
+              <img class="w-14 object-contain" src="/images/naorrAeygcJzX0SyNI4Y0.png" alt="" />
+              <div class="ml-5">
+                <span class="mt-2 font-semibold">Fedex Delivery</span>
+                <p class="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
+              </div>
+            </label>
+          </div>
+          <div class="relative">
+            <input class="peer hidden" id="radio_2" type="radio" name="radio" checked />
+            <span class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+            <label class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_2">
+              <img class="w-14 object-contain" src="/images/oG8xsl3xsOkwkMsrLGKM4.png" alt="" />
+              <div class="ml-5">
+                <span class="mt-2 font-semibold">Fedex Delivery</span>
+                <p class="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
+              </div>
+            </label>
+          </div>
+        </form> --}}
     </div>
 
     <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
@@ -96,7 +100,7 @@
         </div> --}}
         <label for="card-holder" class="mt-4 mb-2 block text-sm font-medium">{{ __('validation.attributes.card_holder') }}</label>
         <div class="relative">
-          <input type="text" id="card-holder" name="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" required/>
+          <input type="text" id="card-holder" name="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" required />
           <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
@@ -181,23 +185,24 @@
         <div class="mt-6 border-t border-b py-2">
           <div class="flex items-center justify-between">
             <p class="text-sm font-medium text-gray-900">{{ __('checkout.subtotal') }}</p>
-            <p class="font-semibold text-gray-900">$399.00</p>
+            <p class="font-semibold text-gray-900">{{ $subtotal }}<span class="text-xs">{{ $currency }}</span></p>
           </div>
           <div class="flex items-center justify-between">
-            <p class="text-sm font-medium text-gray-900">{{ __('checkout.tax') }}</p>
-            <p class="font-semibold text-gray-900">$8.00</p>
+            <p class="text-sm font-medium text-gray-900">{{ __('checkout.tax') }} — <span class="text-xs text-black/80">%{{ $tax * 100 }}</span></p>
+            <p class="font-semibold text-gray-900">{{ $taxValue }}<span class="text-xs">{{ $currency }}</span></p>
           </div>
           <div class="flex items-center justify-between">
             <p class="text-sm font-medium text-gray-900">{{ __('checkout.shipping') }}</p>
-            <p class="font-semibold text-gray-900">$8.00</p>
+            <p class="font-semibold text-gray-900">{{ $shipping }}<span class="text-xs">{{ $currency }}</span></p>
           </div>
         </div>
         <div class="mt-6 flex items-center justify-between">
           <p class="text-sm font-medium text-gray-900">{{ __('checkout.total') }}</p>
-          <p class="text-2xl font-semibold text-gray-900">$408.00</p>
+          <p class="text-2xl font-semibold text-gray-900">{{ $total }}<span class="text-xs">{{ $currency }}</span></p>
         </div>
         <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">{{ __('checkout.place_order') }}</button>
       </form>
     </div>
   </div>
+  @endunless
 </x-app-layout>

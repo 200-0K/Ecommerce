@@ -15,4 +15,7 @@ return [
 
   // 'comments' => 'التعليقات',
   // 'rates' => 'التقييمات',
+
+  'no_cart_products_message' => 'سلتك فارغة',
+  'continue_shopping' => 'مواصلة التسوق'
 ];

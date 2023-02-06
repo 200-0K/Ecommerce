@@ -15,4 +15,7 @@ return [
 
   // 'comments' => 'Comments',
   // 'rates' => 'Rates',
+
+  'no_cart_products_message' => 'Your Cart is Empty',
+  'continue_shopping' => 'Continue Shopping'
 ];
