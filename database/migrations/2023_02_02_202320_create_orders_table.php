@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('qty', unsigned: true);
+            $table->decimal('price', unsigned: true);
             $table->text('comment')->nullable();
-            $table->float('rate', 2, 1, unsigned: true);
+            $table->float('rate', 2, 1, unsigned: true)->nullable();
             $table->foreignId('product_id')->constrained('products');
             $table->foreignId('invoice_id')->constrained('invoices');
             $table->timestamps();

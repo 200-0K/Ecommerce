@@ -21,21 +21,27 @@ class ProductImageFactory extends Factory
     public function definition()
     {
         $product = Product::inRandomOrder()->with('category')->first();
-        
-        $output = new ConsoleOutput();
-        while (true) {
-            $res = Http::get('https://source.unsplash.com/random/');
-            // $url = str($res->effectiveUri())->before('?');
-            $url = $res->effectiveUri();
-            
-            if (ProductImage::firstWhere('url', $url) == null) break;
-            // $output->writeln(['Duplicate:', $url]);
-            sleep(1);
-        }
 
         return [
-            'url' => str($url),
+            'url' => 'https://source.unsplash.com/random/',
             'product_id' => $product->id,
         ];
+    }
+
+    public function uniqueImage() {
+        return $this->state(function ($attributes) {
+            while (true) {
+                $res = Http::get('https://source.unsplash.com/random/');
+                // $url = str($res->effectiveUri())->before('?');
+                $url = $res->effectiveUri();
+                
+                if (ProductImage::firstWhere('url', $url) == null) break;
+                sleep(1);
+            }
+
+            return [
+                'url' => str($url),
+            ];
+        });
     }
 }

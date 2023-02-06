@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->float('tax');
             // $table->string('payment_method');
+            $table->float('tax');
+            $table->string('address');
+            $table->string('zip');
+            $table->foreignId('city_id')->constrained('cities');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });

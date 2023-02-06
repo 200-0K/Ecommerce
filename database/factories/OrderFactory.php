@@ -26,6 +26,7 @@ class OrderFactory extends Factory
         $product->decrement('qty', $qty);
 
         return [
+            'price' => $product->new_price ?? $product->price,
             'qty' => $qty,
             'rate' => fake()->randomFloat(1, 0, 5),
             'comment' => fake('ar_SA')->realText(),
