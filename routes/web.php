@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\CheckoutController;
 use App\Http\Controllers\Web\ProductController;
 use Illuminate\Support\Facades\Route;
