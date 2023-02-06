@@ -21,11 +21,14 @@ Route::get('/', function () {
 });
 
 Route::get('/explore', [ProductController::class, 'index'])->name('explore');
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function() {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
