@@ -28,6 +28,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
     })->name('dashboard');
     
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+    Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.proceed');
 });
 
 Route::middleware('auth')->group(function () {
