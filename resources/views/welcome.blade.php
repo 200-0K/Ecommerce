@@ -1,4 +1,4 @@
-<x-layout class="flex items-center justify-center">
+<x-app-layout class="flex items-center justify-center">
   <div class="hero">
     <div class="hero-content text-center">
       <div class="max-w-md">
@@ -8,4 +8,4 @@
       </div>
     </div>
   </div>
-</x-layout>
+</x-app-layout>

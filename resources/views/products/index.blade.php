@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
   <div class="flex flex-col gap-8 py-5 items-center">
     <h1 class="text-center text-3xl">تصفح منتجاتنا</h1>
     <div class="grid grid-cols-3 gap-4 place-items-center w-3/5 mx-auto">
@@ -16,4 +16,4 @@
     </div>
     {{ $products->links() }}
   </div>
-</x-layout>
+</x-app-layout>
