@@ -146,6 +146,11 @@ return [
     'ulid' => 'The :attribute must be a valid ULID.',
     'uuid' => 'The :attribute must be a valid UUID.',
 
+    'confirm' => 'Confirm',
+    'cancel' => 'Cancel',
+    'save' => 'Save',
+    'saved' => 'Saved',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -175,8 +180,11 @@ return [
     */
 
     'attributes' => [
+        'current_password'      => 'Current Password',
+        'new_password'          => 'New Password',
         'card_holder'           => 'Card Holder',
         'card_details'          => 'Card Details',
+        'zip'                   => 'ZIP',
     ],
 
 ];

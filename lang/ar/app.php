@@ -11,4 +11,8 @@ return [
   'payment'   => 'الدفع',
   'add_cart'  => 'اضافة للعربة',
   'discount'  => 'خصم :percent%',
+  'view_cart' => 'الذهاب الى السلة',
+
+  // 'comments' => 'التعليقات',
+  // 'rates' => 'التقييمات',
 ];
