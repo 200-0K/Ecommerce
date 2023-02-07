@@ -16,6 +16,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "daisyui": "^2.49.0"
+        "daisyui": "^2.49.0",
+        "toastify-js": "^1.12.0"
     }
 }
