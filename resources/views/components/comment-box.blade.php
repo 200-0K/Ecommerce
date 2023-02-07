@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-  <p class="mb-3">{{ $comment }}</p>
+  <p class="mb-3" dir="auto">{{ $comment }}</p>
   {{-- <div class="rounded-lg bg-gray-100 p-4">
     <p class="mb-2 text-gray-500">You commented on Sep 4</p>
     <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia rem eum nostrum.</p>

@@ -23,6 +23,7 @@ return [
 
   'customer' => 'العميل',
   'product' => '{1} منتج|{2} منتجين|[3,*] منتجات',
+  'product_name' => 'اسم المنتج',
   'category' => 'الفئة',
   'description' => 'الوصف',
   'quantity' => 'الكمية',

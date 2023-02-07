@@ -84,7 +84,7 @@ class DatabaseSeeder extends Seeder
 
         $products = Product::factory(100)
             ->has(ProductImage::factory(3), 'images')
-            // ->has(ProductImage::factory(3)->uniqueImage()->create(), 'images') // If you want to generate unique images (this takes more time long)
+            // ->has(ProductImage::factory(3)->uniqueImage(), 'images') // If you want to generate unique images (this takes more time long)
             ->create();
 
         User::factory(10)

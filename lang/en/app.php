@@ -10,6 +10,7 @@ return [
   'shop'      => 'Shop',
   'shipping'  => 'Shipping',
   'payment'   => 'Payment',
+  'invoice'   => 'Invoice',
   'add_cart'  => 'Add To Cart',
   'discount'  => 'Discount :percent%',
   'view_cart' => 'Go To Cart',
@@ -22,6 +23,7 @@ return [
 
   'customer' => 'Customer',
   'product' => '{1} Product|[3,*] Products',
+  'product_name' => 'Product Name',
   'category' => 'Category',
   'description' => 'Description',
   'quantity' => 'Quantity',
