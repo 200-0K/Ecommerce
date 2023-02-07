@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Web\ProfileController;
-use App\Http\Controllers\Web\CheckoutController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\OrderController;
 use App\Http\Controllers\Web\InvoiceController;
 use App\Http\Controllers\Web\ProductController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\ProfileController;
+use App\Http\Controllers\Web\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/locale/{locale}', function ($locale) {
+    if (!in_array($locale, ['ar', 'en'])) {
+        abort(400);
+    }
+    session()->put('locale', $locale);
+    return back();
+})->name('locale.update');
+
 Route::get('/explore', [ProductController::class, 'index'])->name('explore');
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
 
@@ -33,6 +42,8 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.proceed');
     
     Route::get('/invoice/{invoice}', [InvoiceController::class, 'show'])->name('invoice.show');
+
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 });
 
 Route::middleware('auth')->group(function () {
