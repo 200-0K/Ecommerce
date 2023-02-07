@@ -43,7 +43,7 @@
       <p class="text-gray-400" dir="auto">{{ __('cart.order_summary.description') }}</p>
       <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
         @foreach($products as $product)
-        <x-checkout-product-item :name="$product->name" :cover="$product->images()->first()->url" :qty="$product->pivot->qty" :price="($product->new_price ?? $product->price) * $product->pivot->qty" :currency="$currency" />
+        <x-checkout-product-item :url="route('product.show', $product)" :name="$product->name" :cover="$product->images()->first()->url" :qty="$product->pivot->qty" :price="($product->new_price ?? $product->price) * $product->pivot->qty" :currency="$currency" />
         @endforeach
       </div>
 

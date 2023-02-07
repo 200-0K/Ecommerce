@@ -26,7 +26,7 @@ class ProductController extends Controller
         }
         return view('products.index', ['products' => $products]);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -51,21 +51,30 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        $product->load(['images', 'orders' => ['invoice'], 'company']);
+        $product->price = round($product->price);
+        if ($product->new_price) $product->new_price = round($product->new_price);
+        $product->cover = $product->images[0]->url;
+        $product->currency = 'SAR';
+        $product->rate = round($product->orders->avg('rate') ?? 0, 2);
+        $product->ordersWithComments = $product->orders->whereNotNull('comment');
+        $product->commentsCount = $product->ordersWithComments->count('comment');
+        
+        return view('products.show', ['product' => $product]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
         //
     }
@@ -74,10 +83,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -85,10 +94,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
         //
     }

@@ -22,6 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('/explore', [ProductController::class, 'index'])->name('explore');
+Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
 
 Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/dashboard', function () {

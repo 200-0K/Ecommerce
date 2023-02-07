@@ -4,6 +4,7 @@
     <div class="grid grid-cols-3 gap-4 place-items-center w-3/5 mx-auto">
       @foreach($products as $product)
         <x-product-card
+          :url="route('product.show', $product)"
           :id="$product->id"
           :name="$product->name"
           :price="$product->price"
