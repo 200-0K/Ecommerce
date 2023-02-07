@@ -66,6 +66,7 @@
         @auth
         <div class="text-center text-xs opacity-80 p-2">{{ $user->name }}</div>
         <x-dropdown-link dir="auto" :href="route('profile.edit')">{{ __('auth.profile') }}</x-dropdown-link>
+        <x-dropdown-link dir="auto" :href="route('orders')">{{ __('app.orders') }}</x-dropdown-link>
         <!-- Authentication -->
         <form method="POST" action="{{ route('logout') }}">
           @csrf
