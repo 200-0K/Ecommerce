@@ -86,7 +86,7 @@ class CheckoutController extends Controller
             }
         });
 
-        return redirect()->route('invoice.show', ['invoice' => $invoice]);
+        return redirect()->route('invoice.show', $invoice);
     }
 
     /**
