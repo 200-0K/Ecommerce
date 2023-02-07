@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\CheckoutController;
+use App\Http\Controllers\Web\InvoiceController;
 use App\Http\Controllers\Web\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,9 @@ Route::middleware(['auth', 'verified'])->group(function() {
     
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.proceed');
+    
+    // Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice');
+    Route::get('/invoice/{invoice}', [InvoiceController::class, 'show'])->name('invoice.show');
 });
 
 Route::middleware('auth')->group(function () {
