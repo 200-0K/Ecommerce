@@ -34,7 +34,7 @@
         <div class="card-body">
           @if($cartCount > 0)
           <span class="font-bold text-lg" dir="auto">{{ $cartCount }} {{ trans_choice('app.product', $cartCount) }}</span>
-          <span class="text-info" dir="auto">{{ __('checkout.subtotal') }}: {{ $cart->sum(fn ($product) => $product->new_price ?? $product->price ) ?? '' }} <span class="text-xs">{{ $currency }}</span></span>
+          <span class="text-info" dir="auto">{{ __('app.subtotal') }}: {{ $cart->sum(fn ($product) => $product->new_price ?? $product->price ) ?? '' }} <span class="text-xs">{{ $currency }}</span></span>
           @endif
           <div class="card-actions">
             <a href="{{route('checkout')}}" class="btn btn-primary btn-block">{{ __('app.view_cart') }}</a>

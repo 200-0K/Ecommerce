@@ -9,9 +9,6 @@ return [
     'title' => 'معلومات الدفع',
     'description' => 'أكمل طلبك بتزويدنا بمعلومات الدفع.'
   ],
-  'subtotal' => 'إجمالي المنتجات',
-  'tax' => 'الضريبة',
-  'shipping' => 'الشحن',
-  'total' => 'الإجمالي',
-  'place_order' => 'إكمال الشراء'
+  'place_order' => 'إكمال الدفع',
+  'no_cart_products_message' => 'سلتك فارغة',
 ];

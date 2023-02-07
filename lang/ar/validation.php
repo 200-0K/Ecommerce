@@ -39,7 +39,7 @@ return [
     'declined_if' => 'الحقل :attribute مرفوض في حال ما إذا كان :other يساوي :value.',
     'different' => 'يجب أن يكون الحقلان :attribute و :other مُختلفان.',
     'digits' => 'يجب أن يحتوي الحقل :attribute على :digits رقمًا/أرقام.',
-    'digits_between' => 'يجب أن يحتوي الحقل :attribute بين :min و :max رقمًا/أرقام.',
+    'digits_between' => 'يجب أن يحتوي الحقل :attribute بين :min إلى :max رقمًا/أرقام.',
     'dimensions' => 'الـ :attribute يحتوي على أبعاد صورة غير صالحة.',
     'distinct' => 'للحقل :attribute قيمة مُكرّرة.',
     'doesnt_end_with' => 'يجب على الـ :attribute الا ينتهي بأحد القيم التالية: :values.',

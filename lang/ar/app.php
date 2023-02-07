@@ -9,6 +9,7 @@ return [
   'shop'      => 'تسوق',
   'shipping'  => 'شحن',
   'payment'   => 'الدفع',
+  'invoice'   => 'الفاتورة',
   'add_cart'  => 'اضافة للعربة',
   'discount'  => 'خصم :percent%',
   'view_cart' => 'الذهاب الى السلة',
@@ -16,6 +17,15 @@ return [
   // 'comments' => 'التعليقات',
   // 'rates' => 'التقييمات',
 
-  'no_cart_products_message' => 'سلتك فارغة',
-  'continue_shopping' => 'مواصلة التسوق'
+  'continue_shopping' => 'مواصلة التسوق',
+
+  'product' => '{1} منتج|{2} منتجين|[3,*] منتجات',
+  'description' => 'الوصف',
+  'quantity' => 'الكمية',
+  'price' => 'السعر',
+
+  'subtotal' => 'إجمالي المنتجات',
+  'tax' => 'الضريبة',
+  'shipping' => 'الشحن',
+  'total' => 'الإجمالي',
 ];

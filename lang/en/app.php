@@ -16,6 +16,17 @@ return [
   // 'comments' => 'Comments',
   // 'rates' => 'Rates',
 
-  'no_cart_products_message' => 'Your Cart is Empty',
-  'continue_shopping' => 'Continue Shopping'
+  'continue_shopping' => 'Continue Shopping',
+
+  'product' => '{1} Product|[3,*] Products',
+  'description' => 'Description',
+  'quantity' => 'Quantity',
+  'price' => 'Price',
+
+  'subtotal' => 'Subtotal',
+  'tax' => 'Tax',
+  'shipping' => 'Shipping',
+  'total' => 'Total',
+
+  
 ];
