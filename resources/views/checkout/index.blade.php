@@ -5,7 +5,7 @@
   <div class="flex-1 flex flex-col gap-4 items-center justify-center bg-white py-20 sm:px-10 lg:px-20 xl:px-32">
     <svg class="w-full h-full max-h-20" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 48 48">
       <path d="M14.5 44q-1.5 0-2.55-1.05-1.05-1.05-1.05-2.55 0-1.5 1.05-2.55Q13 36.8 14.5 36.8q1.5 0 2.55 1.05 1.05 1.05 1.05 2.55 0 1.5-1.05 2.55Q16 44 14.5 44Zm20.2 0q-1.5 0-2.55-1.05-1.05-1.05-1.05-2.55 0-1.5 1.05-2.55 1.05-1.05 2.55-1.05 1.5 0 2.55 1.05 1.05 1.05 1.05 2.55 0 1.5-1.05 2.55Q36.2 44 34.7 44ZM24 18.8q-.7 0-1.2-.5t-.5-1.2q0-.7.5-1.2t1.2-.5q.7 0 1.2.5t.5 1.2q0 .7-.5 1.2t-1.2.5ZM22.5 12V2h3v10Zm-8 21.65q-2.1 0-3.075-1.7-.975-1.7.025-3.45l3.05-5.55L7 7H3.1V4h5.8l8.5 18.2H32l7.8-14 2.6 1.4-7.65 13.85q-.45.85-1.225 1.3-.775.45-1.825.45h-15l-3.1 5.45h24.7v3Z" /></svg>
-    <p class="text-3xl font-bold text-black/80">{{ __('checkout.no_cart_products_message') }}</p>
+    <p class="text-3xl font-bold text-black/80">{{ __('cart.no_cart_products_message') }}</p>
     <a href="{{ route('explore') }}" class="btn btn-primary font-bold">{{ __('app.continue_shopping') }}</a>
   </div>
   @else
@@ -39,8 +39,8 @@
 
   <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
     <div class="px-4 pt-8">
-      <p class="text-xl font-medium" dir="auto">{{ __('checkout.order_summary.title') }}</p>
-      <p class="text-gray-400" dir="auto">{{ __('checkout.order_summary.description') }}</p>
+      <p class="text-xl font-medium" dir="auto">{{ __('cart.order_summary.title') }}</p>
+      <p class="text-gray-400" dir="auto">{{ __('cart.order_summary.description') }}</p>
       <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
         @foreach($products as $product)
         <x-checkout-product-item :name="$product->name" :cover="$product->images()->first()->url" :qty="$product->pivot->qty" :price="($product->new_price ?? $product->price) * $product->pivot->qty" :currency="$currency" />
@@ -76,8 +76,8 @@
     </div>
 
     <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
-      <p class="text-xl font-medium" dir="auto">{{ __('checkout.payment_details.title') }}</p>
-      <p class="text-gray-400" dir="auto">{{ __('checkout.payment_details.description') }}</p>
+      <p class="text-xl font-medium" dir="auto">{{ __('cart.payment_details.title') }}</p>
+      <p class="text-gray-400" dir="auto">{{ __('cart.payment_details.description') }}</p>
       <form action="{{route('checkout.proceed')}}" method="POST">
         @csrf
         {{-- <label for="email" class="mt-4 mb-2 block text-sm font-medium">{{ __('validation.attributes.email') }}</label>
@@ -160,7 +160,7 @@
           <p class="text-sm font-medium text-gray-900">{{ __('app.total') }}</p>
           <p class="text-2xl font-semibold text-gray-900">{{ $total }}<span class="text-xs">{{ $currency }}</span></p>
         </div>
-        <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">{{ __('checkout.place_order') }}</button>
+        <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">{{ __('cart.place_order') }}</button>
       </form>
     </div>
   </div>

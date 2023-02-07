@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with(['category', 'images', 'orders'])->simplePaginate(15);
+        $products = Product::with(['category', 'images', 'orders'])->where('qty', '>', 0)->simplePaginate(15);
         foreach ($products as $product) {
             $product->price = round($product->price);
             if ($product->new_price) $product->new_price = round($product->new_price);

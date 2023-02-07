@@ -11,4 +11,5 @@ return [
   ],
   'place_order' => 'Place Order',
   'no_cart_products_message' => 'Your Cart is Empty',
+  'added_to_cart' => 'Product has been added to cart!'
 ];

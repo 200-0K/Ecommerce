@@ -11,4 +11,5 @@ return [
   ],
   'place_order' => 'إكمال الدفع',
   'no_cart_products_message' => 'سلتك فارغة',
+  'added_to_cart' => 'تمت إضافة المنتج'
 ];
