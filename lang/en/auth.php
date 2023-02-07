@@ -25,6 +25,7 @@ return [
     'resend_email_verification_message' => 'You didn\'t receive the email, we will gladly send you another.',
     'resend_email_verification_completed' => 'A new verification link has been sent to your email address.',
     'unverified_email' => 'Your email address is unverified.',
+    'verification_link_sent' => 'A new verification link has been sent to the email address you provided during registration.',
 
     'already_registered' => 'Already Registered?',
     'remember_me' => 'Remember Me',

@@ -33,11 +33,7 @@ Route::get('/locale/{locale}', function ($locale) {
 Route::get('/explore', [ProductController::class, 'index'])->name('explore');
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
 
-Route::middleware(['auth', 'verified'])->group(function() {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    
+Route::middleware(['auth', 'verified'])->group(function() {    
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.proceed');
     

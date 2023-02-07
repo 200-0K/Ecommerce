@@ -25,6 +25,7 @@ return [
     'resend_email_verification_message' => 'لم تتلق البريد الإلكتروني؟ سنرسله لك من جديد بكل سرور!',
     'resend_email_verification_completed' => 'تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني.',
     'unverified_email' => 'لم يتم التحقق من عنوان بريدك الإلكتروني.',
+    'verification_link_sent' => 'تم إرسال رابط تحقق جديد إلى عنوان البريد الإلكتروني الذي قدمته أثناء التسجيل.',
 
     'already_registered' => 'لديك حساب؟',
     'remember_me' => 'تذكرني',

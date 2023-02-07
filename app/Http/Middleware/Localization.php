@@ -15,7 +15,7 @@ class Localization
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $locale=null)
+    public function handle(Request $request, Closure $next, $locale = null)
     {
         App::setLocale($locale ?? $request->session()->get('locale', config('app.locale')));
         return $next($request);
