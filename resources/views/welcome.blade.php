@@ -1,5 +1,5 @@
 <x-app-layout class="flex items-center justify-center">
-  <div class="hero">
+  <div class="hero my-14">
     <div class="hero-content text-center">
       <div class="max-w-md">
         <h1 class="text-5xl font-bold" dir="auto">{{ __('app.welcome') }}</h1>
