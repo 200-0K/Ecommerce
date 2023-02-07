@@ -19,10 +19,10 @@ class Order extends Model
     ];
 
     public function invoice() {
-        $this->belongsTo(Invoice::class, 'invoice_id');
+        return $this->belongsTo(Invoice::class, 'invoice_id');
     }
 
     public function product() {
-        $this->belongsTo(Product::class, 'product_id');
+        return $this->belongsTo(Product::class, 'product_id');
     }
 }
