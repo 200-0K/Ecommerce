@@ -1,10 +1,7 @@
 <div class="bg-base-200 text-base-content">
   <footer class="footer mx-auto max-w-6xl px-4 py-20">
     <div>
-      <div class="font-title inline-flex text-3xl">
-        <span class="text-primary capitalize">Phone</span>
-        <span class="text-base-content capitalize">App</span>
-      </div>
+      <div class="font-title text-3xl text-base-content first-letter:text-primary">{{ config('app.name') }}</div>
       <p class="opacity-50 text-center" dir="auto">
         {!! wordwrap(__("app.summary"), 70, "<br />") !!}
       </p>
