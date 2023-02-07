@@ -17,7 +17,7 @@ return [
   'buy'       => 'Buy',
 
   'comments' => 'Comments',
-  'rates' => 'Rates',
+  'rates' => 'Ratings',
 
   'continue_shopping' => 'Continue Shopping',
 
