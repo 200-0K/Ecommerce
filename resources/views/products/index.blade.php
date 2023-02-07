@@ -4,13 +4,14 @@
     <div class="grid grid-cols-3 gap-4 place-items-center w-3/5 mx-auto">
       @foreach($products as $product)
         <x-product-card
-          name="{!! $product->name !!}"
-          price="{!! $product->price !!}"
-          newPrice="{!! $product->new_price !!}"
-          currency="{!! $product->currency !!}"
-          rate="{!! $product->rate !!}"
-          cover="{!! $product->cover !!}"
-          commentsCount="{!! $product->commentsCount !!}"
+          :id="$product->id"
+          :name="$product->name"
+          :price="$product->price"
+          :newPrice="$product->new_price"
+          :currency="$product->currency"
+          :rate="$product->rate"
+          :cover="$product->cover"
+          :commentsCount="$product->commentsCount"
         />
       @endforeach
     </div>
